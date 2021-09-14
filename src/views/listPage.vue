@@ -2,22 +2,24 @@
   <div class="hello">
       <hi></hi>
         <ul>
-            <li v-for: class in classes></li>
+            <li v-for="course in courses" :key="course.courseNo" :course="course">{{course.name}}</li>
         </ul>
   </div>
 </template>
 
 <script>
+import CourseServices from '@/services/CourseServices.js'
+
 export default {
   data() {
     return {
-      classes: []
+      courses: []
     };
   },
   created() {
-    TodoServices.getLists()
+    CourseServices.getCourses()
       .then(response => {
-        this.classes = response.data
+        this.courses = response.data
       })
       .catch(error => {
         console.log('There was an error:', error.response)
