@@ -14,18 +14,47 @@ export default {
   components: { CourseDisplay },
   data() {
     return {
-      course: Object
+      course: Object,
+      message: String
     };
   },
   created() {
-    if (this.isEdit){
-      CourseServices.getCourses()
+    if (this.isEdit === true){
+      CourseServices.getCourse(this.courseNo)
         .then(response => {
-          this.courses = response.data
+          this.course = response.data
         })
         .catch(error => {
           console.log('There was an error:', error.response)
         })
+    }
+  },
+
+  methods: {
+    execute(){
+      if(this.isEdit === true) this.addCourse();
+      else this.updateCourse();
+    },
+    addCourse() {
+        CourseServices.addCourse(this.course)
+        .then(() => {
+          this.$router.push({ name: 'list' })
+        })
+        .catch(error => {
+          console.log(error)
+        })
+    },
+    updateCourse() {
+      CourseServices.updateCourse(this.courseNo, this.course)
+        .then(() => {
+          this.$router.push({ name: 'list' })
+        })
+        .catch(error => {
+          this.message = error.message
+        })
+    },
+    cancel() {
+      if (this.isEdit) this.$router.push({ name: 'list' });
     }
   }
 }
