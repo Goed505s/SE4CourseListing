@@ -1,16 +1,13 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <list-page />
+  <div id="app">
+    <h1>Oklahoma Christian Course List Site</h1>
+    <router-view />
+  </div>
 </template>
 
 <script>
-import ListPage from './views/listPage.vue'
-
 export default {
   name: 'App',
-  components: {
-    ListPage
-  }
 }
 </script>
 

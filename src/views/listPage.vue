@@ -1,16 +1,15 @@
 <template>
   <div class="hello">
-      <hi></hi>
-        <ul>
-            <li v-for="course in courses" :key="course.courseNo" :course="course">{{course.name}}</li>
-        </ul>
+      <course-display v-for="course in courses" :key="course.courseNo" :course="course" />
   </div>
 </template>
 
 <script>
 import CourseServices from '@/services/CourseServices.js'
+import CourseDisplay from '../components/CourseDisplay.vue';
 
 export default {
+  components: { CourseDisplay },
   data() {
     return {
       courses: []
