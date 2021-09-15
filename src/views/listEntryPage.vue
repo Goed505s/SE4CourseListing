@@ -14,18 +14,19 @@ export default {
   components: { CourseDisplay },
   data() {
     return {
-      course: Object,
-      isEdit: Boolean
+      course: Object
     };
   },
   created() {
-    CourseServices.getCourses()
-      .then(response => {
-        this.courses = response.data
-      })
-      .catch(error => {
-        console.log('There was an error:', error.response)
-      })
+    if (this.isEdit){
+      CourseServices.getCourses()
+        .then(response => {
+          this.courses = response.data
+        })
+        .catch(error => {
+          console.log('There was an error:', error.response)
+        })
+    }
   }
 }
 </script>
