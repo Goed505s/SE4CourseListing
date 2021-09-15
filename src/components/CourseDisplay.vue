@@ -5,7 +5,10 @@
       <span>edit</span>
     </router-link>
     <span> | </span>
-    <!--https://vuejs.org/v2/guide/events.html-->
+    <!--https://vuejs.org/v2/guide/events.html
+      make it relad page
+      make it do a pop up
+    -->
     <button v-on:click="deleteCourse()"><span>delete</span></button>
       
     <span>)</span>
