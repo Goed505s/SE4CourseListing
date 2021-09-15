@@ -5,18 +5,25 @@
       <span>edit</span>
     </router-link>
     <span> | </span>
-    <router-link :to="{ name: 'delete', params: { id: course.courseNo } }">
-      <span>delete</span>
-    </router-link>
+    <!--https://vuejs.org/v2/guide/events.html-->
+    <button v-on:click="deleteCourse()"><span>delete</span></button>
+      
     <span>)</span>
   </div>
 </template>
 
 <script>
+import CourseServices from "@/services/CourseServices.js";
+
 export default {
   name: 'ListEntry',
   props: {
     course: Object
+  },
+  methods: {
+    deleteCourse(){
+      CourseServices.deleteCourse(this.course.courseNo);
+    }
   }
 }
 </script>
