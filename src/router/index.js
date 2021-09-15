@@ -8,7 +8,7 @@ const routes = [
     component: listPage
   },
   {
-    path: '/',
+    path: '/add',
     name: 'add',
     component: listPage
   },

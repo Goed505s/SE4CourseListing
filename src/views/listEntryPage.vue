@@ -1,7 +1,7 @@
 <template>
   <div class="hello">
-      <router-link :to="{ name: 'add'}"><span>Add New Course</span></router-link>
-      <course-display v-for="course in courses" :key="course.courseNo" :course="course" />
+      
+      
   </div>
 </template>
 
@@ -10,10 +10,12 @@ import CourseServices from '@/services/CourseServices.js'
 import CourseDisplay from '../components/CourseDisplay.vue';
 
 export default {
+  props: ['isEdit', 'courseNo'],
   components: { CourseDisplay },
   data() {
     return {
-      courses: []
+      course: Object,
+      isEdit: Boolean
     };
   },
   created() {
