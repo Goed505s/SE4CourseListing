@@ -34,5 +34,17 @@ const apiClient = axios.create({
 export default {
   getCourses() {
     return apiClient.get("");
-  }
+  },
+  getCourse(courseNo) {
+    return apiClient.getCourse("/course/" + courseNo);
+  },
+  deleteCourse(courseNo) {
+    return apiClient.delete("/course/" + courseNo);
+  },
+  addCourse(course) {
+    return apiClient.post("/course/", course);
+  },
+  updateCourse(courseNo, course) {
+    return apiClient.put("/course/" + courseNo, course);
+  },
 };

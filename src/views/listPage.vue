@@ -1,5 +1,6 @@
 <template>
   <div class="hello">
+      <router-link :to="{ name: 'add'}"><span>Add New Course</span></router-link>
       <course-display v-for="course in courses" :key="course.courseNo" :course="course" />
   </div>
 </template>
