@@ -1,6 +1,6 @@
 import {createRouter, createWebHistory} from 'vue-router'
 import listPage from '../views/listPage.vue'
-import listPage from '../views/listEntryPage.vue'
+import listEntryPage from '../views/listEntryPage.vue'
 
 const routes = [
   {

@@ -7,11 +7,9 @@
 
 <script>
 import CourseServices from '@/services/CourseServices.js'
-import CourseDisplay from '../components/CourseDisplay.vue';
 
 export default {
   props: ['isEdit', 'courseNo'],
-  components: { CourseDisplay },
   data() {
     return {
       course: Object,
