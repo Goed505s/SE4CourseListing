@@ -1,14 +1,17 @@
+
 <template>
   <form class="detail-form">
         
         <label for = "courseNo">Course Number: </label>
         <textarea readonly id = "courseNo" v-model = "courseNo"></textarea>
 
+
         <label for = "name">Course Name: </label>
         <textarea id = "name" v-model = "name"></textarea>
 
         <label for = "description">Course Description: </label>
         <textarea id = "description" v-model = "description"></textarea>
+
 
     </form>,
 </template>
