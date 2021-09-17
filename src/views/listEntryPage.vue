@@ -28,7 +28,7 @@ export default {
   props: ['courseNo'],
   data() {
     return {
-      message: String,
+      message: null,
       course: {
         dept: "",
         courseNo: "",      
