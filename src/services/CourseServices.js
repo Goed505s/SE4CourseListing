@@ -1,11 +1,11 @@
 import axios from "axios";
 
-var baseurl = "";
-if (process.env.NODE_ENV === "development") {
+var baseurl = "http://localhost:8081";
+/*if (process.env.NODE_ENV === "development") {
   baseurl = "http://localhost:8081";
 } else {
   baseurl = "/";
-}
+}*/
 
 const apiClient = axios.create({
   baseURL: baseurl,
