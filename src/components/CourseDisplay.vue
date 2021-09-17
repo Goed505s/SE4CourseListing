@@ -30,7 +30,11 @@ export default {
         'Sure you wanna delete ' + this.course.name + '? It\'ll be gone forever!'
       )
       if (answer) {
+        
         CourseServices.deleteCourse(this.course.courseNo); // <-- Confirm delete
+        // https://stackoverflow.com/questions/40445125/how-can-component-delete-itself-in-vue-2-0
+        this.$delete;
+        this.$el.parentNode.removeChild(this.$el);
       } 
     }
   }
