@@ -1,11 +1,22 @@
 <template>
   <div class="hello">
-    <h1 v-if="this.isEdit">test {{this.courseNo}}</h1>
+    <form>
+      <h1 v-if="this.isEdit">test {{this.courseNo}}</h1>
+        <label for = "courseID">Course Number: </label>
+        <textarea readonly id = "courseID" v-model="courseID"></textarea>
+
+        <label for = "name">Course Name: </label>
+        <textarea id = "name" v-model="course.name"></textarea>
+
+        <label for = "description">Course Description: </label>
+        <textarea id = "description" v-model="this.course.description"></textarea>
+    </form>
   </div>
 </template>
 
 <script>
 import CourseServices from '@/services/CourseServices.js'
+
 
 export default {
   props: ['courseNo'],
@@ -13,7 +24,8 @@ export default {
     return {
       message: String,
       course: Object,
-      isEdit: false
+      isEdit: false,
+      courseID: ""
     };
   },
   created() {
