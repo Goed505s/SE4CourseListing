@@ -3,7 +3,8 @@
     <form>
       <h1 v-if="this.isEdit">test {{this.course}}</h1>
       <label for = "courseID">Course Number: </label>
-      <textarea readonly id = "courseID" v-model="courseID"></textarea>
+      <textarea v-if="isEdit" readonly id = "courseID" v-model="courseID"></textarea>
+      <textarea v-else id = "courseID" v-model="courseID"></textarea>
 
       <label for = "name">Course Name: </label>
       <textarea id = "name" v-model="course.name"></textarea>
