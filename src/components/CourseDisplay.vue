@@ -1,7 +1,7 @@
 <template>
   <div class="courseDisp">
     <span>{{course.courseNo}} {{course.name}} (</span>
-    <router-link :to="{ name: 'edit', params: { id: course.courseNo } }">
+    <router-link :to="{ name: 'edit', params: { courseNo: course.courseNo } }">
       <span>edit</span>
     </router-link>
     <span> | </span>
@@ -60,6 +60,18 @@ a {
 }
 .courseDisp {
   margin: 10px 10px;
+}
+/*https://stackoverflow.com/questions/1367409/how-to-make-button-look-like-a-link*/
+button {
+  background: none!important;
+  border: none;
+  padding: 0!important;
+  /*optional*/
+  font-family: arial, sans-serif;
+  /*input has OS specific font-family*/
+  color: #069;
+  text-decoration: underline;
+  cursor: pointer;
 }
 
 </style>

@@ -14,10 +14,10 @@ const routes = [
     component: listEntryPage
   },
   {
-    path: '/edit/:id',
+    path: '/edit/:courseNo',
     name: 'edit',
-    component: listEntryPage,
-    props: true
+    props: true,
+    component: listEntryPage
   }
 ]
 

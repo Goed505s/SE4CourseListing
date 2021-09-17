@@ -1,7 +1,6 @@
 <template>
   <div class="hello">
-      
-      
+    <h1 v-if="this.isEdit">test {{this.courseNo}}</h1>
   </div>
 </template>
 
@@ -9,18 +8,20 @@
 import CourseServices from '@/services/CourseServices.js'
 
 export default {
-  props: ['isEdit', 'courseNo'],
+  props: ['courseNo'],
   data() {
     return {
+      message: String,
       course: Object,
-      message: String
+      isEdit: false
     };
   },
   created() {
-    if (this.isEdit === true){
+    if (this.courseNo != null){
+      this.isEdit = true;
       CourseServices.getCourse(this.courseNo)
         .then(response => {
-          this.course = response.data
+          this.course = response.data;
         })
         .catch(error => {
           console.log('There was an error:', error.response)
