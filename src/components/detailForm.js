@@ -16,6 +16,13 @@ app.component('detail-form', {
         <textarea id = "description" v-model = "description"></textarea>
     </form>,
 
+//placeholder for fixing stuff
+
+
+
+
+
+
     data(){
         return{
             courseNo: courseNo,
