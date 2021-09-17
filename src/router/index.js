@@ -1,5 +1,6 @@
 import {createRouter, createWebHistory} from 'vue-router'
 import listPage from '../views/listPage.vue'
+import listEntryPage from '../views/listEntryPage.vue'
 
 const routes = [
   {
@@ -10,17 +11,13 @@ const routes = [
   {
     path: '/add',
     name: 'add',
-    component: listPage
+    component: listEntryPage
   },
   {
-    path: '/',
+    path: '/edit/:id',
     name: 'edit',
-    component: listPage
-  },
-  {
-    path: '/',
-    name: 'delete',
-    component: listPage
+    component: listEntryPage,
+    props: true
   }
 ]
 
