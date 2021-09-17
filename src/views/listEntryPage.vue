@@ -1,7 +1,6 @@
 <template>
   <div class="hello">
-      
-      
+    <h1>test {{this.courseNo}}</h1>
   </div>
 </template>
 
@@ -9,18 +8,19 @@
 import CourseServices from '@/services/CourseServices.js'
 
 export default {
-  props: ['isEdit', 'courseNo'],
+  props: ['courseNo'],
   data() {
     return {
+      message: String,
       course: Object,
-      message: String
+      isEdit: Boolean
     };
   },
   created() {
-    if (this.isEdit === true){
+    if (this.courseNo != null){
       CourseServices.getCourse(this.courseNo)
         .then(response => {
-          this.course = response.data
+          this.course = response.data;
         })
         .catch(error => {
           console.log('There was an error:', error.response)
