@@ -1,15 +1,15 @@
 <template>
   <div class="hello">
     <form>
-      <h1 v-if="this.isEdit">test {{this.courseNo}}</h1>
-        <label for = "courseID">Course Number: </label>
-        <textarea readonly id = "courseID" v-model="courseID"></textarea>
+      <h1 v-if="this.isEdit">test {{this.course}}</h1>
+      <label for = "courseID">Course Number: </label>
+      <textarea readonly id = "courseID" v-model="courseID"></textarea>
 
-        <label for = "name">Course Name: </label>
-        <textarea id = "name" v-model="course.name"></textarea>
+      <label for = "name">Course Name: </label>
+      <textarea id = "name" v-model="course.name"></textarea>
 
-        <label for = "description">Course Description: </label>
-        <textarea id = "description" v-model="this.course.description"></textarea>
+      <label for = "description">Course Description: </label>
+      <textarea id = "description" v-model="this.course.description"></textarea>
     </form>
   </div>
 </template>
@@ -34,7 +34,7 @@ export default {
       this.courseID = this.courseNo;
       CourseServices.getCourse(this.courseNo)
         .then(response => {
-          this.course = response.data;
+          this.course = response.data[0];
         })
         .catch(error => {
           console.log('There was an error:', error.response)
