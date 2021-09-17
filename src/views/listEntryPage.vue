@@ -1,10 +1,15 @@
 <template>
   <div class="hello">
-    <form>
+    <form>    
+
       <h2 v>test {{this.course}}</h2>
       <h2 v-if="this.isEdit">Edit {{this.course.name}}</h2>
       <h2 v-else>Add New Course</h2>
       <p v-if="message">{{this.message}}</p>
+      
+      <label for = "dept">Department: </label>
+      <textarea id = "dept" v-model="course.dept"></textarea>  
+
       <label for = "courseID">Course Number: </label>
       <textarea v-if="isEdit" readonly id = "courseID" v-model="courseID"></textarea>
       <textarea v-else id = "courseID" v-model="courseID"></textarea>
@@ -12,8 +17,15 @@
       <label for = "name">Course Name: </label>
       <textarea id = "name" v-model="course.name"></textarea>
 
+      <label for = "level">Level: </label>
+      <textarea id = "level" v-model="course.level"></textarea>
+
+      <label for = "hours">Hours: </label>
+      <textarea id = "hours" v-model="course.hours"></textarea>
+
       <label for = "description">Course Description: </label>
       <textarea id = "description" v-model="this.course.description"></textarea>
+
       <button v-on:click="submit">Submit</button>
       <button v-on:click="cancel">Cancel</button>
     </form>
