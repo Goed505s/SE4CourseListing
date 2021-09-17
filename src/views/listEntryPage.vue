@@ -1,6 +1,6 @@
 <template>
   <div class="hello">
-    <h1>test {{this.courseNo}}</h1>
+    <h1 v-if="this.isEdit">test {{this.courseNo}}</h1>
   </div>
 </template>
 
@@ -13,11 +13,12 @@ export default {
     return {
       message: String,
       course: Object,
-      isEdit: Boolean
+      isEdit: false
     };
   },
   created() {
     if (this.courseNo != null){
+      this.isEdit = true;
       CourseServices.getCourse(this.courseNo)
         .then(response => {
           this.course = response.data;

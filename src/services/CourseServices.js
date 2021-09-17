@@ -36,7 +36,7 @@ export default {
     return apiClient.get("");
   },
   getCourse(courseNo) {
-    return apiClient.getCourse("/course/" + courseNo);
+    return apiClient.get("/course/" + courseNo);
   },
   deleteCourse(courseNo) {
     return apiClient.delete("/course/" + courseNo);

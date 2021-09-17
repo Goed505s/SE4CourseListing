@@ -1,7 +1,7 @@
 <template>
   <div class="courseDisp">
     <span>{{course.courseNo}} {{course.name}} (</span>
-    <router-link :to="{ name: 'edit', params: { id: course.courseNo } }">
+    <router-link :to="{ name: 'edit', params: { courseNo: course.courseNo } }">
       <span>edit</span>
     </router-link>
     <span> | </span>
