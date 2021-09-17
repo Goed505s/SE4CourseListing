@@ -1,11 +1,22 @@
 <template>
   <div class="hello">
-    <h1 v-if="this.isEdit">test {{this.courseNo}}</h1>
+    <form>
+      <h1 v-if="this.isEdit">test {{this.course}}</h1>
+      <label for = "courseID">Course Number: </label>
+      <textarea readonly id = "courseID" v-model="courseID"></textarea>
+
+      <label for = "name">Course Name: </label>
+      <textarea id = "name" v-model="course.name"></textarea>
+
+      <label for = "description">Course Description: </label>
+      <textarea id = "description" v-model="this.course.description"></textarea>
+    </form>
   </div>
 </template>
 
 <script>
 import CourseServices from '@/services/CourseServices.js'
+
 
 export default {
   props: ['courseNo'],
@@ -13,15 +24,17 @@ export default {
     return {
       message: String,
       course: Object,
-      isEdit: false
+      isEdit: false,
+      courseID: ""
     };
   },
   created() {
     if (this.courseNo != null){
       this.isEdit = true;
+      this.courseID = this.courseNo;
       CourseServices.getCourse(this.courseNo)
         .then(response => {
-          this.course = response.data;
+          this.course = response.data[0];
         })
         .catch(error => {
           console.log('There was an error:', error.response)
@@ -37,7 +50,7 @@ export default {
     addCourse() {
         CourseServices.addCourse(this.course)
         .then(() => {
-          this.$router.push({ name: 'list' })
+          this.$router.push({ name: '' })
         })
         .catch(error => {
           console.log(error)
@@ -46,14 +59,14 @@ export default {
     updateCourse() {
       CourseServices.updateCourse(this.courseNo, this.course)
         .then(() => {
-          this.$router.push({ name: 'list' })
+          this.$router.push({ name: '' })
         })
         .catch(error => {
           this.message = error.message
         })
     },
     cancel() {
-      if (this.isEdit) this.$router.push({ name: 'list' });
+      if (this.isEdit) this.$router.push({ name: '' });
     }
   }
 }

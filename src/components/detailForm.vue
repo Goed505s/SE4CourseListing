@@ -1,36 +1,40 @@
-const { apply } = require("core-js/fn/reflect");
 
-app.component('detail-form', {
-    template: 
-    <form class="detail-form">
-        <h3>Oklahome Christian</h3>
-        <h2>Course List Details</h2>
-
+<template>
+  <form class="detail-form">
+        
         <label for = "courseNo">Course Number: </label>
-        <textarea id = "courseNo" v-model = "courseNo"></textarea>
+        <textarea readonly id = "courseNo" v-model = "courseNo"></textarea>
+
 
         <label for = "name">Course Name: </label>
         <textarea id = "name" v-model = "name"></textarea>
 
         <label for = "description">Course Description: </label>
         <textarea id = "description" v-model = "description"></textarea>
+
+
     </form>,
+</template>
 
-//placeholder for fixing stuff
+<script>
+import CourseServices from "@/services/CourseServices.js";
 
-
-
-
-
-
-    data(){
+export default{
+props: ['courseNo'],
+data() {
         return{
             courseNo: courseNo,
             name: courseName,
             description: description,
-        }
+        };
     }
-    
-})
+}
 
+</script>
 
+ 
+
+<!-- Add "scoped" attribute to limit CSS to this component only -->
+<style scoped>
+
+</style>
