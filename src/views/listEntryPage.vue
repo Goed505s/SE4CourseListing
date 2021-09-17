@@ -31,6 +31,7 @@ export default {
   created() {
     if (this.courseNo != null){
       this.isEdit = true;
+      this.courseID = this.courseNo;
       CourseServices.getCourse(this.courseNo)
         .then(response => {
           this.course = response.data;
