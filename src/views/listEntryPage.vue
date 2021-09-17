@@ -2,14 +2,25 @@
   <div class="hello">
     <form>
       <h1 v-if="this.isEdit">test {{this.course}}</h1>
+
+      <label for = "dept">Department: </label>
+      <textarea id = "dept" v-model="course.dept"></textarea>      
+
       <label for = "courseID">Course Number: </label>
       <textarea readonly id = "courseID" v-model="courseID"></textarea>
 
       <label for = "name">Course Name: </label>
       <textarea id = "name" v-model="course.name"></textarea>
 
+      <label for = "level">Level: </label>
+      <textarea id = "level" v-model="course.level"></textarea>
+
+      <label for = "hours">Hours: </label>
+      <textarea id = "hours" v-model="course.hours"></textarea>
+
       <label for = "description">Course Description: </label>
       <textarea id = "description" v-model="this.course.description"></textarea>
+
     </form>
   </div>
 </template>
