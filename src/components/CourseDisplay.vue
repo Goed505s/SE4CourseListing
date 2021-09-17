@@ -67,9 +67,10 @@ button {
   border: none;
   padding: 0!important;
   /*optional*/
-  font-family: arial, sans-serif;
+  font-family: arial;
+  font-size: 16px;
   /*input has OS specific font-family*/
-  color: #069;
+  color: #42b983;
   text-decoration: underline;
   cursor: pointer;
 }
