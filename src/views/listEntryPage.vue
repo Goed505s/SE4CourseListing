@@ -37,7 +37,7 @@ export default {
     addCourse() {
         CourseServices.addCourse(this.course)
         .then(() => {
-          this.$router.push({ name: 'list' })
+          this.$router.push({ name: '' })
         })
         .catch(error => {
           console.log(error)
@@ -46,14 +46,14 @@ export default {
     updateCourse() {
       CourseServices.updateCourse(this.courseNo, this.course)
         .then(() => {
-          this.$router.push({ name: 'list' })
+          this.$router.push({ name: '' })
         })
         .catch(error => {
           this.message = error.message
         })
     },
     cancel() {
-      if (this.isEdit) this.$router.push({ name: 'list' });
+      if (this.isEdit) this.$router.push({ name: '' });
     }
   }
 }
