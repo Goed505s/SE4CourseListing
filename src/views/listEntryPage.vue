@@ -1,6 +1,6 @@
 <template>
   <div class="hello">
-    <form>    
+    <form @submit.prevent="sendForm">    
       <h2 v-if="this.isEdit">Edit {{this.course.name}}</h2>
       <h2 v-else>Add New Course</h2>
       <p v-if="message">{{this.message}}</p>
@@ -23,8 +23,8 @@
 
       <label for = "description">Course Description: </label>
       <textarea id = "description" v-model="this.course.description"></textarea>
-
-      <button v-on:click="submit">Submit</button>
+      <!--took some cues from Vue intro and vue form tutorial repos to implement-->
+      <button type="submit">Submit</button>
       <button v-on:click="cancel">Cancel</button>
     </form>
   </div>
@@ -66,41 +66,27 @@ export default {
   },
 
   methods: {
-    submit(){
-      console.log(this.courseNo);
-      console.log(this.courseID);
-      console.log(this.course);
+    sendForm (){
       if(!this.isEdit) this.addCourse();
       else this.updateCourse();
     },
     addCourse() {
-      console.log("add");
       this.course.courseNo = this.courseID;
-      console.log(this.course);
       CourseServices.addCourse(this.course)
         .then(() => {
-          this.$router.push({ name: 'listPage'})
-          console.log("success");
+          this.$router.push({ name: 'listPage' })
         })
         .catch(error => {
-          this.message = error.message
+          this.message = error.message;
+          console.log(error);
         })
     },
     updateCourse() {
-      console.log("update");
-      console.log(this.courseNo);
-      console.log(this.course);
       CourseServices.updateCourse(this.courseNo, this.course)
         .then(() => {
-          console.log("update");
-          console.log(this.courseNo);
-          console.log(this.course);
-          this.$router.push({ name: 'listPage'})
+          this.$router.push({ name: 'listPage' })
         })
         .catch(error => {
-          console.log("update");
-          console.log(this.courseNo);
-          console.log(this.course);
           this.message = error.message
           console.log(error)
         })
