@@ -1,8 +1,6 @@
 <template>
   <div class="hello">
-    <form>    
-
-      <h2 v>test {{this.course}}</h2>
+    <form @submit.prevent="sendForm">    
       <h2 v-if="this.isEdit">Edit {{this.course.name}}</h2>
       <h2 v-else>Add New Course</h2>
       <p v-if="message">{{this.message}}</p>
@@ -25,8 +23,8 @@
 
       <label for = "description">Course Description: </label>
       <textarea id = "description" v-model="this.course.description"></textarea>
-
-      <button v-on:click="submit">Submit</button>
+      <!--took some cues from Vue intro and vue form tutorial repos to implement-->
+      <button type="submit">Submit</button>
       <button v-on:click="cancel">Cancel</button>
     </form>
   </div>
@@ -40,7 +38,7 @@ export default {
   props: ['courseNo'],
   data() {
     return {
-      message: String,
+      message: null,
       course: {
         dept: "",
         courseNo: "",      
@@ -68,8 +66,8 @@ export default {
   },
 
   methods: {
-    submit(){
-      if(this.isEdit === true) this.addCourse();
+    sendForm (){
+      if(!this.isEdit) this.addCourse();
       else this.updateCourse();
     },
     addCourse() {
@@ -79,7 +77,8 @@ export default {
           this.$router.push({ name: 'listPage' })
         })
         .catch(error => {
-          console.log(error)
+          this.message = error.message;
+          console.log(error);
         })
     },
     updateCourse() {
@@ -89,6 +88,7 @@ export default {
         })
         .catch(error => {
           this.message = error.message
+          console.log(error)
         })
     },
     cancel() {
