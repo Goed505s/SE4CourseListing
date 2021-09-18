@@ -13,7 +13,7 @@
         <textarea id = "description" v-model = "description"></textarea>
 
 
-    </form>,
+    </form>
 </template>
 
 <script>

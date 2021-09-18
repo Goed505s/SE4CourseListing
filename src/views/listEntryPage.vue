@@ -1,8 +1,6 @@
 <template>
   <div class="hello">
     <form>    
-
-      <h2 v>test {{this.course}}</h2>
       <h2 v-if="this.isEdit">Edit {{this.course.name}}</h2>
       <h2 v-else>Add New Course</h2>
       <p v-if="message">{{this.message}}</p>
@@ -40,7 +38,7 @@ export default {
   props: ['courseNo'],
   data() {
     return {
-      message: String,
+      message: null,
       course: {
         dept: "",
         courseNo: "",      
@@ -69,26 +67,42 @@ export default {
 
   methods: {
     submit(){
-      if(this.isEdit === true) this.addCourse();
+      console.log(this.courseNo);
+      console.log(this.courseID);
+      console.log(this.course);
+      if(!this.isEdit) this.addCourse();
       else this.updateCourse();
     },
     addCourse() {
+      console.log("add");
       this.course.courseNo = this.courseID;
+      console.log(this.course);
       CourseServices.addCourse(this.course)
         .then(() => {
-          this.$router.push({ name: 'listPage' })
-        })
-        .catch(error => {
-          console.log(error)
-        })
-    },
-    updateCourse() {
-      CourseServices.updateCourse(this.courseNo, this.course)
-        .then(() => {
-          this.$router.push({ name: 'listPage' })
+          this.$router.push({ name: 'listPage'})
+          console.log("success");
         })
         .catch(error => {
           this.message = error.message
+        })
+    },
+    updateCourse() {
+      console.log("update");
+      console.log(this.courseNo);
+      console.log(this.course);
+      CourseServices.updateCourse(this.courseNo, this.course)
+        .then(() => {
+          console.log("update");
+          console.log(this.courseNo);
+          console.log(this.course);
+          this.$router.push({ name: 'listPage'})
+        })
+        .catch(error => {
+          console.log("update");
+          console.log(this.courseNo);
+          console.log(this.course);
+          this.message = error.message
+          console.log(error)
         })
     },
     cancel() {
