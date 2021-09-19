@@ -5,7 +5,8 @@
       <h2 v-else>Add New Course</h2>
       <p v-if="message">{{this.message}}</p>
       
-      <label for = "dept">Department: &nbsp;&nbsp;&nbsp;&emsp;&emsp;</label>
+     <label for = "dept">Department: &nbsp;&nbsp;&nbsp;&emsp;&emsp;</label>
+
       <textarea id = "dept" v-model="course.dept"></textarea>  
       <br>
 
@@ -31,8 +32,8 @@
       <!--took some cues from Vue intro and vue form tutorial repos to implement-->
       <br>
       <br>
+      <button type="submit">Submit</button>
 
- <button type="submit">Submit</button>
       <button v-on:click="cancel">Cancel</button>
     </form>
   </div>

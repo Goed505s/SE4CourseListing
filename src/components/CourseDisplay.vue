@@ -5,9 +5,11 @@
       <button>edit</button>
     </router-link>
 
+
     <button v-on:click="deleteCourse()"><span>delete</span></button>
       
  
+
   </div>
 </template>
 

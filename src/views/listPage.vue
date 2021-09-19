@@ -42,8 +42,8 @@ li {
 }
 a {
   color: #ffffff;
-
 }
+
 
 .addnew{
   text-align: center;
@@ -55,6 +55,8 @@ a {
   margin-right: 50px;
   text-decoration: none;
 }
+
+
 
 
 

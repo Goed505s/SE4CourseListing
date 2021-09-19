@@ -18,9 +18,6 @@ export default {
 <style>
 
 
-@import url('https://fonts.googleapis.com/css?family=Pathway Gothic One');
-
-
 #app {
   font-family:  'Arial Narrow';
   text-align: center;
@@ -56,5 +53,8 @@ button:hover {
   background-color: #e0a606; /* Green */
   color: white;
 }
+
+
+
 
 </style>
