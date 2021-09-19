@@ -4,7 +4,7 @@ var baseurl = "";
 if (process.env.NODE_ENV === "development") {
   baseurl = "http://localhost:8081";
 } else {
-  baseurl = "http://team2.eaglesoftware.com:8081/";
+  baseurl = "http://team2.eaglesoftwareteam.com:8081/";
 }
 
 const apiClient = axios.create({
