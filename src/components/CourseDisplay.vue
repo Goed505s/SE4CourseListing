@@ -1,17 +1,15 @@
 <template>
   <div class="courseDisp">
-    <span>{{course.courseNo}} {{course.name}} (</span>
+    <span>{{course.courseNo}} {{course.name}} </span>
     <router-link :to="{ name: 'edit', params: { courseNo: course.courseNo } }">
-      <span>edit</span>
+      <button>edit</button>
     </router-link>
-    <span> | </span>
     <!--https://vuejs.org/v2/guide/events.html
       make it relad page
       make it do a pop up
     -->
     <button v-on:click="deleteCourse()"><span>delete</span></button>
       
-    <span>)</span>
   </div>
 </template>
 
@@ -49,30 +47,44 @@ h3 {
 }
 ul {
   list-style-type: none;
-  padding: 0;
+
+  padding: 0px;
 }
 li {
   display: inline-block;
   margin: 0 10px;
+  
 }
 a {
-  color: #42b983;
-}
-.courseDisp {
-  margin: 10px 10px;
-}
-/*https://stackoverflow.com/questions/1367409/how-to-make-button-look-like-a-link*/
-button {
-  background: none!important;
+
+  text-decoration: none;
+
+  
+  }
+.edit{
   border: none;
   padding: 0!important;
-  /*optional*/
   font-family: arial;
-  font-size: 16px;
-  /*input has OS specific font-family*/
-  color: #42b983;
-  text-decoration: underline;
-  cursor: pointer;
+  font-size: 17px;
+  color: #ffc400;
+  background-color: #6e000098;
+  height: 40px;
+  width: 70px;
+    cursor: pointer;
+
+}
+.courseDisp {
+  padding: 30px;
+  margin-top: 20px;
+
+  margin-bottom: 20px;
+  margin-left: 100px;
+  margin-right: 100px;
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 20px;
+  font-weight: normal;
+  background-color: rgba(143, 11, 11, 0.856);
 }
 
 </style>

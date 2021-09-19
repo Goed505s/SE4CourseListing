@@ -5,25 +5,32 @@
       <h2 v-else>Add New Course</h2>
       <p v-if="message">{{this.message}}</p>
       
-      <label for = "dept">Department: </label>
+     <label for = "dept">Department: &nbsp;&nbsp;&nbsp;&emsp;&emsp;</label>
       <textarea id = "dept" v-model="course.dept"></textarea>  
+      <br>
 
-      <label for = "courseID">Course Number: </label>
+      <label for = "courseID">Course Number: &nbsp;&emsp;</label>
       <textarea v-if="isEdit" readonly id = "courseID" v-model="courseID"></textarea>
       <textarea v-else id = "courseID" v-model="courseID"></textarea>
+      <br>
 
-      <label for = "name">Course Name: </label>
+      <label for = "name">Course Name: &emsp;&emsp;</label>
       <textarea id = "name" v-model="course.name"></textarea>
+      <br>
 
-      <label for = "level">Level: </label>
+      <label for = "level">Level: &emsp; &nbsp; &nbsp;&emsp;&emsp;&emsp; </label>
       <textarea id = "level" v-model="course.level"></textarea>
+      <br>
 
-      <label for = "hours">Hours: </label>
+      <label for = "hours">Hours:&emsp;&emsp;&emsp;&emsp; &emsp;</label>
       <textarea id = "hours" v-model="course.hours"></textarea>
+      <br>
 
-      <label for = "description">Course Description: </label>
+      <label for = "description">Course Description:&nbsp; </label>
       <textarea id = "description" v-model="this.course.description"></textarea>
       <!--took some cues from Vue intro and vue form tutorial repos to implement-->
+      <br>
+      <br>
       <button type="submit">Submit</button>
       <button v-on:click="cancel">Cancel</button>
     </form>
