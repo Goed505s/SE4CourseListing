@@ -1,11 +1,11 @@
 import axios from "axios";
 
-var baseurl = "";
-if (process.env.NODE_ENV === "development") {
+var baseurl = "http://localhost:8081";
+/*if (process.env.NODE_ENV === "development") {
   baseurl = "http://localhost:8081";
 } else {
   baseurl = "/";
-}
+}*/
 
 const apiClient = axios.create({
   baseURL: baseurl,
@@ -36,12 +36,14 @@ export default {
     return apiClient.get("");
   },
   getCourse(courseNo) {
-    return apiClient.getCourse("/course/" + courseNo);
+    return apiClient.get("/course/" + courseNo);
   },
   deleteCourse(courseNo) {
     return apiClient.delete("/course/" + courseNo);
   },
   addCourse(course) {
+    console.log("Help");
+    console.log(course);
     return apiClient.post("/course/", course);
   },
   updateCourse(courseNo, course) {

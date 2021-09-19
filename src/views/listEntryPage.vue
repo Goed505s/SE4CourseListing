@@ -1,28 +1,63 @@
 <template>
   <div class="hello">
+    <form @submit.prevent="sendForm">    
+      <h2 v-if="this.isEdit">Edit {{this.course.name}}</h2>
+      <h2 v-else>Add New Course</h2>
+      <p v-if="message">{{this.message}}</p>
       
-      
+      <label for = "dept">Department: </label>
+      <textarea id = "dept" v-model="course.dept"></textarea>  
+
+      <label for = "courseID">Course Number: </label>
+      <textarea v-if="isEdit" readonly id = "courseID" v-model="courseID"></textarea>
+      <textarea v-else id = "courseID" v-model="courseID"></textarea>
+
+      <label for = "name">Course Name: </label>
+      <textarea id = "name" v-model="course.name"></textarea>
+
+      <label for = "level">Level: </label>
+      <textarea id = "level" v-model="course.level"></textarea>
+
+      <label for = "hours">Hours: </label>
+      <textarea id = "hours" v-model="course.hours"></textarea>
+
+      <label for = "description">Course Description: </label>
+      <textarea id = "description" v-model="this.course.description"></textarea>
+      <!--took some cues from Vue intro and vue form tutorial repos to implement-->
+      <button type="submit">Submit</button>
+      <button v-on:click="cancel">Cancel</button>
+    </form>
   </div>
 </template>
 
 <script>
 import CourseServices from '@/services/CourseServices.js'
-import CourseDisplay from '../components/CourseDisplay.vue';
+
 
 export default {
-  props: ['isEdit', 'courseNo'],
-  components: { CourseDisplay },
+  props: ['courseNo'],
   data() {
     return {
-      course: Object,
-      message: String
+      message: null,
+      course: {
+        dept: "",
+        courseNo: "",      
+        level: 0,
+        hours: 0,
+        name: "",
+        description: ""
+      },
+      isEdit: false,
+      courseID: ""
     };
   },
   created() {
-    if (this.isEdit === true){
+    if (this.courseNo != null){
+      this.isEdit = true;
+      this.courseID = this.courseNo;
       CourseServices.getCourse(this.courseNo)
         .then(response => {
-          this.course = response.data
+          this.course = response.data[0];
         })
         .catch(error => {
           console.log('There was an error:', error.response)
@@ -31,30 +66,33 @@ export default {
   },
 
   methods: {
-    execute(){
-      if(this.isEdit === true) this.addCourse();
+    sendForm (){
+      if(!this.isEdit) this.addCourse();
       else this.updateCourse();
     },
     addCourse() {
-        CourseServices.addCourse(this.course)
+      this.course.courseNo = this.courseID;
+      CourseServices.addCourse(this.course)
         .then(() => {
-          this.$router.push({ name: 'list' })
+          this.$router.push({ name: 'listPage' })
         })
         .catch(error => {
-          console.log(error)
+          this.message = error.message;
+          console.log(error);
         })
     },
     updateCourse() {
       CourseServices.updateCourse(this.courseNo, this.course)
         .then(() => {
-          this.$router.push({ name: 'list' })
+          this.$router.push({ name: 'listPage' })
         })
         .catch(error => {
           this.message = error.message
+          console.log(error)
         })
     },
     cancel() {
-      if (this.isEdit) this.$router.push({ name: 'list' });
+      this.$router.push({ name: 'listPage' });
     }
   }
 }
