@@ -1,5 +1,5 @@
 <template>
-  <div class="hello">
+  <div class="addnew">
       <router-link :to="{ name: 'add'}"><span>Add New Course</span></router-link>
       <course-display v-for="course in courses" :key="course.courseNo" :course="course" />
   </div>
@@ -8,7 +8,6 @@
 <script>
 import CourseServices from '@/services/CourseServices.js'
 import CourseDisplay from '../components/CourseDisplay.vue';
-
 export default {
   components: { CourseDisplay },
   data() {
@@ -35,13 +34,28 @@ h3 {
 }
 ul {
   list-style-type: none;
-  padding: 0;
+  padding: 20px;
 }
 li {
   display: inline-block;
   margin: 0 10px;
 }
 a {
-  color: #42b983;
+  color: #ffffff;
+
 }
+
+.addnew{
+  text-align: center;
+  font-size: 25px;
+  font-weight: bold;
+  background-color: #001f38;
+  height: 40px;
+  margin-left: 50px;
+  margin-right: 50px;
+  text-decoration: none;
+}
+
+
+
 </style>

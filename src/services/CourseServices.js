@@ -42,6 +42,8 @@ export default {
     return apiClient.delete("/course/" + courseNo);
   },
   addCourse(course) {
+    console.log("Help");
+    console.log(course);
     return apiClient.post("/course/", course);
   },
   updateCourse(courseNo, course) {
