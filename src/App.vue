@@ -1,8 +1,11 @@
-<template>
+<template> 
+ 
+
   <div id="app">
-    <h1>Oklahoma Christian Course List Site</h1>
+    <h1><br>Oklahoma Christian Course List Site</h1>
     <router-view />
   </div>
+
 </template>
 
 <script>
@@ -11,7 +14,9 @@ export default {
 }
 </script>
 
+
 <style>
+
 
 #app {
   font-family:  'Arial Narrow';
@@ -48,5 +53,8 @@ button:hover {
   background-color: #e0a606; /* Green */
   color: white;
 }
+
+
+
 
 </style>

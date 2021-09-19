@@ -12,12 +12,12 @@
         <label for = "description">Course Description: </label>
         <textarea id = "description" v-model = "description"></textarea>
 
-
     </form>
 </template>
 
 <script>
 import CourseServices from "@/services/CourseServices.js";
+
 
 export default{
 props: ['courseNo'],
@@ -29,12 +29,13 @@ data() {
         };
     }
 }
-
 </script>
+
+
+
 
  
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 
 </style>

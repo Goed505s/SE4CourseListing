@@ -8,7 +8,6 @@
 <script>
 import CourseServices from '@/services/CourseServices.js'
 import CourseDisplay from '../components/CourseDisplay.vue';
-
 export default {
   components: { CourseDisplay },
   data() {
@@ -56,5 +55,9 @@ a {
   margin-right: 50px;
   text-decoration: none;
 }
+
+
+
+
 
 </style>

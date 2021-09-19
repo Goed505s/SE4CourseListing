@@ -6,6 +6,7 @@
       <p v-if="message">{{this.message}}</p>
       
      <label for = "dept">Department: &nbsp;&nbsp;&nbsp;&emsp;&emsp;</label>
+
       <textarea id = "dept" v-model="course.dept"></textarea>  
       <br>
 
@@ -32,6 +33,7 @@
       <br>
       <br>
       <button type="submit">Submit</button>
+
       <button v-on:click="cancel">Cancel</button>
     </form>
   </div>
@@ -39,8 +41,6 @@
 
 <script>
 import CourseServices from '@/services/CourseServices.js'
-
-
 export default {
   props: ['courseNo'],
   data() {
@@ -71,7 +71,6 @@ export default {
         })
     }
   },
-
   methods: {
     sendForm (){
       if(!this.isEdit) this.addCourse();

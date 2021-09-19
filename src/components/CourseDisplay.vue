@@ -4,12 +4,12 @@
     <router-link :to="{ name: 'edit', params: { courseNo: course.courseNo } }">
       <button>edit</button>
     </router-link>
-    <!--https://vuejs.org/v2/guide/events.html
-      make it relad page
-      make it do a pop up
-    -->
+
+
     <button v-on:click="deleteCourse()"><span>delete</span></button>
       
+ 
+
   </div>
 </template>
 
@@ -86,5 +86,8 @@ a {
   font-weight: normal;
   background-color: rgba(143, 11, 11, 0.856);
 }
+/*https://stackoverflow.com/questions/1367409/how-to-make-button-look-like-a-link*/
+
+
 
 </style>
