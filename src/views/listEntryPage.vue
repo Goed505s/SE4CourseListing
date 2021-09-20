@@ -95,7 +95,7 @@ export default {
           this.$router.push({ name: 'listPage' })
         })
         .catch(error => {
-          this.message = error.message;
+          this.message = error.response.data[0].message;
           console.log(error)
         })
     },
