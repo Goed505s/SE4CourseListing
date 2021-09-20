@@ -83,8 +83,10 @@ export default {
           this.$router.push({ name: 'listPage' })
         })
         .catch(error => {
-          this.message = error.message;
-          console.log(error);
+          // https://jasonwatmore.com/post/2020/07/23/vue-axios-http-post-request-examples
+          // https://stackoverflow.com/questions/61613545/global-http-response-error-handling-in-vue-axios-with-vuex
+          this.message = error.response.data[0].message;
+          //console.log(error);
         })
     },
     updateCourse() {
@@ -93,7 +95,7 @@ export default {
           this.$router.push({ name: 'listPage' })
         })
         .catch(error => {
-          this.message = error.message
+          this.message = error.message;
           console.log(error)
         })
     },
